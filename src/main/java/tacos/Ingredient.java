@@ -1,13 +1,6 @@
 package tacos;
 
-import lombok.Data;
-
-@Data
-public class Ingredient {
-
-  private final String id;
-  private final String name;
-  private final Type type;
+public record Ingredient(String id, String name, Type type) {
 
   public static enum Type {
     WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
