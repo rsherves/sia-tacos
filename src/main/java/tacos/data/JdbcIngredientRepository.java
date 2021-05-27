@@ -6,6 +6,7 @@ import tacos.Ingredient;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class JdbcIngredientRepository implements IngredientRepository {
@@ -17,7 +18,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
   }
 
   @Override
-  public Iterable<Ingredient> findAll() {
+  public List<Ingredient> findAll() {
     return jdbcTemplate.query(
         "SELECT id, name, type FROM ingredient",
         this::toIngredient);
