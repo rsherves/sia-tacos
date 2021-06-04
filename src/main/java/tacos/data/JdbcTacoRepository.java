@@ -1,7 +1,6 @@
 package tacos.data;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -35,11 +34,13 @@ public class JdbcTacoRepository implements TacoRepository {
 
   private long saveTacoInfo(Taco taco) {
     taco.setCreatedAt(LocalDateTime.now());
-    PreparedStatementCreator psc = new PreparedStatementCreatorFactory(
+    var pscFactory = new PreparedStatementCreatorFactory(
         "INSERT INTO taco (name, createdAt) VALUES (?, ?)",
         Types.VARCHAR,
-        Types.TIMESTAMP
-    ).newPreparedStatementCreator(
+        Types.TIMESTAMP);
+    pscFactory.setReturnGeneratedKeys(true);
+
+    var psc = pscFactory.newPreparedStatementCreator(
         List.of(
             taco.getName(),
             Timestamp.valueOf(taco.getCreatedAt())));
