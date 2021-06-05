@@ -63,7 +63,7 @@ public class DesignTacoController {
 
   @PostMapping
   public String processDesign(@Valid @ModelAttribute("design") Taco design,
-                              @ModelAttribute Order order,
+                              @ModelAttribute(binding = false) Order order,
                               Errors errors) {
     if (errors.hasErrors()) {
       return "design";
