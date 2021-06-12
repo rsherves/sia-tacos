@@ -43,9 +43,9 @@ public class JdbcIngredientRepository implements IngredientRepository {
   public Ingredient save(Ingredient ingredient) {
     jdbcTemplate.update(
         "INSERT INTO ingredient (id, name, type) VALUES (?, ?, ?)",
-        ingredient.id(),
-        ingredient.name(),
-        ingredient.type());
+        ingredient.getId(),
+        ingredient.getName(),
+        ingredient.getType());
     return ingredient;
   }
 }
