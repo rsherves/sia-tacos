@@ -1,3 +1,6 @@
+-- NOTE: file ignored if DB initialized by JPA/Hibernate,
+-- see property `spring.jpa.hibernate.ddl-auto`
+
 create table if not exists Ingredient (
   id varchar(4) not null,
   name varchar(25) not null,

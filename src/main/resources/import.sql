@@ -1,4 +1,4 @@
--- NOTE: file ignored if DB initialized by JPA/Hibernate,
+-- NOTE: file ignored if DB initialized by SpringBoot (not by JPA/Hibernate),
 -- see property `spring.jpa.hibernate.ddl-auto`
 
 delete from Taco_Order_Tacos;
